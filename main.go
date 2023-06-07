@@ -8,19 +8,17 @@ import (
 )
 
 func main() {
-	eFlag := flag.Bool("e", false, "description of e flag")
-	dFlag := flag.Bool("d", false, "description of d flag")
-	uFlag := flag.Bool("u", false, "description of u flag")
+	eFlag := flag.Bool("e", false, "encode")
+	dFlag := flag.Bool("d", false, "decode")
+	uFlag := flag.Bool("u", false, "url encode / decode")
 
 	flag.Parse()
 
 	args := flag.Args()
 	if len(args) > 0 {
-		// Get the last argument
 		lastArg := args[len(args)-1]
 
 		if *eFlag {
-			// Base64 (URL) encode the last argument
 			var encodedArg string
 			if *uFlag {
 				encodedArg = base64.RawURLEncoding.EncodeToString([]byte(lastArg))
@@ -29,7 +27,6 @@ func main() {
 			}
 			fmt.Println(encodedArg)
 		} else if *dFlag {
-			// Base64 (URL) decode the last argument
 			var decodedArg []byte
 			var err error
 			if *uFlag {
