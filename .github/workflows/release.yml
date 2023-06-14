@@ -32,6 +32,17 @@ jobs:
       - name: Build Windows
         run: GOOS=windows GOARCH=amd64 go build -o b64-windows-amd64.exe
 
+
+      - name: Create tarballs
+        run: |
+          tar czvf b64-linux-amd64.tar.gz b64-linux-amd64
+          tar czvf b64-darwin-amd64.tar.gz b64-darwin-amd64
+
+      - name: Calculate SHA-256 hashes
+        run: |
+            sha256sum b64-linux-amd64.tar.gz > b64-linux-amd64.tar.gz.sha256
+            sha256sum b64-darwin-amd64.tar.gz > b64-darwin-amd64.tar.gz.sha256
+
       - name: Upload release assets
         uses: softprops/action-gh-release@v1
         env:
@@ -41,3 +52,7 @@ jobs:
             b64-linux-amd64
             b64-darwin-amd64
             b64-windows-amd64.exe
+            b64-linux-amd64.tar.gz
+            b64-linux-amd64.tar.gz.sha256
+            b64-darwin-amd64.tar.gz
+            b64-darwin-amd64.tar.gz.sha256
