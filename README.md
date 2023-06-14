@@ -1,6 +1,14 @@
 # b64
 A base64 encode / decoder in Go
 
+To install:
+```
+brew tap mahe54/homebrew-b64
+```
+
+```
+brew install b64
+```
 base64 encode:
 b64 -e SomethingToEncode
 
