@@ -33,31 +33,11 @@ jobs:
         run: GOOS=windows GOARCH=amd64 go build -o b64-windows-amd64.exe
 
       - name: Upload release assets
-        uses: actions/upload-release-asset@v1
+        uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./b64-linux-amd64
-          asset_name: b64-linux-amd64
-          asset_content_type: application/octet-stream
-
-      - name: Upload release assets
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./b64-darwin-amd64
-          asset_name: b64-darwin-amd64
-          asset_content_type: application/octet-stream
-
-      - name: Upload release assets
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./b64-windows-amd64.exe
-          asset_name: b64-windows-amd64.exe
-          asset_content_type: application/octet-stream
+          files: |
+            b64-linux-amd64
+            b64-darwin-amd64
+            b64-windows-amd64.exe
