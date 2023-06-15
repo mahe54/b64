@@ -2,7 +2,7 @@
 A base64 Raw / URL Encode / Decode, tool written in Go.
 It does not add the trailing new line character (K).
 
-####To install:
+##### To install:
 ```
 brew tap mahe54/homebrew-b64
 brew install b64
